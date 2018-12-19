@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Курсы валют</string>
+    <string name="pb_name_text">ПриватБанк</string>
+    <string name="date">17.12.2018</string>
+    <string name="nbu_name_text">НБУ</string>
+    <string name="ccy">Валюта</string>
+    <string name="buy">Покупка</string>
+    <string name="sale">Продажа</string>
+    <string name="valuta">USD</string>
+    <string name="valuta_by">28.25</string>
+    <string name="valuta_sale_pb">29.99</string>
+    <string name="ccy_name_nbu">Доллар США</string>
+    <string name="uan">UAN</string>
+    <string name="ccy_name_en">unit</string>
+    <string name="uan_price">32.32</string>
+    <string name="unit">1</string>
+    <string name="date_picker_title">Выберите дату:</string>
+</resources>

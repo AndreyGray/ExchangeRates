@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:id="@+id/container_pb"
+        android:layout_weight="6"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+    <ImageButton
+        android:id="@+id/laga"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/ic_event"/>
+
+    <FrameLayout
+        android:id="@+id/container_nbu"
+        android:layout_weight="4"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+
+
+
+</LinearLayout>
