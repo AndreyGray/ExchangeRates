@@ -53,6 +53,8 @@ public class MyNbuRecyclerAdapter extends RecyclerView.Adapter<NbuViewHolder> {
     public void onBindViewHolder(@NonNull NbuViewHolder holder, int i) {
         if(round(i%2)==0){
             holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackground));
+        }else {
+            holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackgroundW));
         }
         holder.unitCcy.setText(results.get(i).getCc());
         holder.textCcy.setText(results.get(i).getTxt());

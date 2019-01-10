@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#60d81b</color>
     <color name="colorBackground">#E8F5E9</color>
+    <color name="colorBackgroundW">#ffffff</color>
     <color name="dateTextColor">#9E9D24</color>
+
 </resources>

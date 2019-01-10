@@ -2,31 +2,44 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="2"
+    android:orientation="vertical"
     tools:context=".MainActivity"
     android:baselineAligned="false">
 
-    <FrameLayout
-        android:id="@+id/container_pb"
-        android:layout_weight="1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/colorBackgroundW"
+        app:title="@string/app_name">
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-    <ImageButton
-        android:id="@+id/laga"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@drawable/ic_event"/>
+        <FrameLayout
+            android:id="@+id/container_pb"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"/>
 
 
-    <FrameLayout
-        android:id="@+id/container_nbu"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        <FrameLayout
+            android:id="@+id/container_nbu"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"/>
+
+    </LinearLayout>
+
+
 
 
 

@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -13,7 +16,27 @@ import android.widget.ImageButton;
 import andreyskakunenko.exchangeratespbandnbu.Adapter.MyPbRecyclerAdapter;
 
 public class MainActivity extends AppCompatActivity implements MyPbRecyclerAdapter.Callbacks {
-    ImageButton webView;
+    Toolbar mToolbar;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user_menu_graph,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_graph) {
+            // startService
+            Intent intent = new Intent(MainActivity.this,WebGraph.class);
+            intent.putExtra("webURL","https://hryvna.today/");
+            startActivity(intent);
+        }
+        if(item.getItemId() == R.id.exit_app){
+            finish();
+        }
+        return true;
+    }
 
     @LayoutRes
     protected int getLayoutResId() {
@@ -25,16 +48,8 @@ public class MainActivity extends AppCompatActivity implements MyPbRecyclerAdapt
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         //setContentView(R.layout.activity_main);
-        webView =findViewById(R.id.laga);
-        webView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent detail = new Intent(MainActivity.this,WebGraph.class);
-                detail.putExtra("webURL","https://hryvna.today/");
-                startActivity(detail);
-
-            }
-        });
+        mToolbar = findViewById(R.id.mToolbar);
+        setSupportActionBar(mToolbar);
 
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragmentPb = fm.findFragmentById(R.id.container_pb);
@@ -51,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements MyPbRecyclerAdapt
             fm.beginTransaction()
                     .add(R.id.container_nbu, fragmentNbu)
                     .commit();
-            fragmentNbu.setRetainInstance(true);
+            //fragmentNbu.setRetainInstance(true);
         }
 
     }

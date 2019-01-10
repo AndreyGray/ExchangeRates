@@ -15,4 +15,6 @@
     <string name="uan_price">32.32</string>
     <string name="unit">1</string>
     <string name="date_picker_title">Выберите дату:</string>
+    <string name="graph_build">Строим график</string>
+    <string name="exit">Exit</string>
 </resources>
