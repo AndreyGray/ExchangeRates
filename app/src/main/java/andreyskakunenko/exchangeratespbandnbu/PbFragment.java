@@ -145,7 +145,11 @@ public class PbFragment extends Fragment {
                         mResults=new ArrayList<>();
                         PbResult mRes;
                         for(int i=0;i<archiveToDate.getExchangeRate().size();i++){
-                            if(archiveToDate.getExchangeRate().get(i).getSaleRate()!=null){
+                            if(archiveToDate.getExchangeRate().get(i).getSaleRate()!=null&&
+                                    (archiveToDate.getExchangeRate().get(i).getCurrency().equals("USD") ||
+                                    archiveToDate.getExchangeRate().get(i).getCurrency().equals("EUR") ||
+                                    archiveToDate.getExchangeRate().get(i).getCurrency().equals("RUB") )
+                            ){
                                 mRes = new PbResult(archiveToDate.getExchangeRate().get(i).getCurrency(),
                                         archiveToDate.getExchangeRate().get(i).getPurchaseRate().toString(),
                                         archiveToDate.getExchangeRate().get(i).getSaleRate().toString());

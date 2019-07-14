@@ -139,9 +139,11 @@ public class NbuFragment extends Fragment {
     public  void detectValute(String ccy){
         for(int i=0;i<mList.size();i++){
             if((mList.get(i).getCc()).compareTo(ccy)==0){
-                mRecyclerView.smoothScrollToPosition(i);//scrollToPosition(i);
-                //mRecyclerView.setBackgroundResource(R.color.colorAccent);
-                //mRecyclerView.setBackgroundColor(R.color.colorAccent);
+               //mRecyclerView.smoothScrollToPosition(i); // with animation
+
+                ((LinearLayoutManager)mRecyclerView.getLayoutManager()).scrollToPositionWithOffset(i,0);
+                ((MyNbuRecyclerAdapter)mRecyclerView.getAdapter()).updateHighlightPosition(i);
+
                 break;
             }
         }

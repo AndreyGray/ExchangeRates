@@ -2,6 +2,7 @@ package andreyskakunenko.exchangeratespbandnbu.Adapter;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +20,7 @@ import static java.lang.Math.round;
 
 class NbuViewHolder extends RecyclerView.ViewHolder{
     TextView textCcy,uanPrice,unitCcy;
-    CardView nbuCard;
+   public CardView nbuCard;
 
 
     public NbuViewHolder(@NonNull View itemView) {
@@ -35,6 +36,8 @@ class NbuViewHolder extends RecyclerView.ViewHolder{
 public class MyNbuRecyclerAdapter extends RecyclerView.Adapter<NbuViewHolder> {
     private Context mContext;
     private List<NbuToday> results;
+    public int updatingPos = -1;//
+
 
     public MyNbuRecyclerAdapter(Context context, List<NbuToday> results) {
         mContext = context;
@@ -51,10 +54,18 @@ public class MyNbuRecyclerAdapter extends RecyclerView.Adapter<NbuViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NbuViewHolder holder, int i) {
-        if(round(i%2)==0){
-            holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackground));
+
+        if (updatingPos == i){
+            holder.itemView.setBackgroundColor(/*updatingPos == i ?*/Color.GREEN /*: Color.TRANSPARENT*/);
         }else {
-            holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackgroundW));
+
+            if (round(i % 2) == 0) {
+                holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.colorBackground));
+                //holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackground));
+            } else {
+                holder.itemView.setBackgroundColor(mContext.getResources().getColor(R.color.colorBackgroundW));
+                //holder.nbuCard.setCardBackgroundColor(mContext.getResources().getColor(R.color.colorBackgroundW));
+            }
         }
         holder.unitCcy.setText(results.get(i).getCc());
         holder.textCcy.setText(results.get(i).getTxt());
@@ -65,5 +76,11 @@ public class MyNbuRecyclerAdapter extends RecyclerView.Adapter<NbuViewHolder> {
     @Override
     public int getItemCount() {
         return results.size();
+    }
+
+    public void updateHighlightPosition(int position){
+        notifyItemChanged(position);
+        updatingPos = position;
+        notifyItemChanged(position);
     }
 }

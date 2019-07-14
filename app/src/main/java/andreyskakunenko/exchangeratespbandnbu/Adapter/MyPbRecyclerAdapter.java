@@ -1,6 +1,7 @@
 package andreyskakunenko.exchangeratespbandnbu.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import andreyskakunenko.exchangeratespbandnbu.R;
 class PbViewHolder extends RecyclerView.ViewHolder {
     TextView ccy,buy,sale;
     CardView mCardView;
+
     public PbViewHolder(@NonNull View itemView) {
         super(itemView);
         ccy = itemView.findViewById(R.id.valuta_pb);
@@ -32,6 +34,7 @@ public class MyPbRecyclerAdapter extends RecyclerView.Adapter<PbViewHolder> {
     private Context mContext;
     private List<PbResult> results;
     private Callbacks mCallbacks;
+    int selectedPos = 8;//
 
 
     public MyPbRecyclerAdapter(Context context, List<PbResult> results) {
@@ -58,6 +61,9 @@ public class MyPbRecyclerAdapter extends RecyclerView.Adapter<PbViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final PbViewHolder holder, int i) {
+
+        holder.itemView.setSelected(selectedPos == i);//
+        holder.itemView.setBackgroundColor(selectedPos == i ? Color.GREEN : Color.TRANSPARENT);//
         String ccystr = results.get(i).getResultCcy();
         if((results.get(i).getResultCcy()).compareTo("BTC")==0)ccystr = "BTCto$";
         holder.ccy.setText(ccystr);
@@ -66,6 +72,9 @@ public class MyPbRecyclerAdapter extends RecyclerView.Adapter<PbViewHolder> {
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notifyItemChanged(selectedPos);//
+                selectedPos= holder.getAdapterPosition();//
+                notifyItemChanged(selectedPos);//
                 String str = results.get(holder.getAdapterPosition()).getResultCcy();
                 if((results.get(holder.getAdapterPosition()).getResultCcy()).compareTo("RUR")==0)str = "RUB";
                 mCallbacks.onValutaSelected(str);
@@ -74,6 +83,7 @@ public class MyPbRecyclerAdapter extends RecyclerView.Adapter<PbViewHolder> {
         });
 
     }
+
 
     @Override
     public int getItemCount() {

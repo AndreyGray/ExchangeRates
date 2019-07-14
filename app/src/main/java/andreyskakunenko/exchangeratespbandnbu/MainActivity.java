@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 
 import andreyskakunenko.exchangeratespbandnbu.Adapter.MyPbRecyclerAdapter;
@@ -27,13 +25,8 @@ public class MainActivity extends AppCompatActivity implements MyPbRecyclerAdapt
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_graph) {
-            // startService
-            Intent intent = new Intent(MainActivity.this,WebGraph.class);
-            intent.putExtra("webURL","https://hryvna.today/");
+            Intent intent = new Intent(this,ChartActivity.class);
             startActivity(intent);
-        }
-        if(item.getItemId() == R.id.exit_app){
-            finish();
         }
         return true;
     }
@@ -47,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MyPbRecyclerAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
-        //setContentView(R.layout.activity_main);
         mToolbar = findViewById(R.id.mToolbar);
         setSupportActionBar(mToolbar);
 

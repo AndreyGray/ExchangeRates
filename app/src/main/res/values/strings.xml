@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Курсы валют</string>
-    <string name="pb_name_text">ПриватБанк</string>
+    <string name="pb_name_text">Приват Банк</string>
     <string name="date">17.12.2018</string>
     <string name="nbu_name_text">НБУ</string>
     <string name="ccy">Валюта</string>
@@ -16,5 +16,6 @@
     <string name="unit">1</string>
     <string name="date_picker_title">Выберите дату:</string>
     <string name="graph_build">Строим график</string>
-    <string name="exit">Exit</string>
+    <string name="exit">Refresh</string>
+    <string name="wrong_message">Something is wrong, :( please check your internet connection and try again :)</string>
 </resources>
